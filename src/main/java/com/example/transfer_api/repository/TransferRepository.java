@@ -11,5 +11,5 @@ import java.util.List;
 
 @Repository
 public interface TransferRepository extends JpaRepository<TransferEntity, Long> {
-    List<TransferEntity> findBySourceAccountOrDestinationAccountOrderByTimestampAsc(Integer accountNumber);
+    List<TransferEntity> findBySourceAccountOrDestinationAccountOrderByTimestampAsc(Integer sourceAccount, Integer destinationAccount);
 }

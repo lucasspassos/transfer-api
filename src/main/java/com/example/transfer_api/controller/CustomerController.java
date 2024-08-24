@@ -20,12 +20,24 @@ public class CustomerController implements CustomersApi {
 
     @Override
     public ResponseEntity<List<Customer>> listCustomers() {
-        return new ResponseEntity<List<Customer>>(customerService.getAllCustomers(), HttpStatus.OK);
+        List<Customer> customers = customerService.getAllCustomers();
+
+        if (customers == null || customers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+
     }
 
     @Override
     public ResponseEntity<Customer> getCustomerByAccountNumber(Integer accountNumber) {
-        return new ResponseEntity<Customer>(customerService.getCustomerByAccountNumber(accountNumber), HttpStatus.OK);
+        Customer customer = customerService.getCustomerByAccountNumber(accountNumber);
+
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     @Override

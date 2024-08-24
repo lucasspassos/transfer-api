@@ -20,7 +20,13 @@ public class TransferController implements TransfersApi {
     private final TransferService transferService;
     @Override
     public ResponseEntity<List<Transfer>> getTransferHistory(Integer accountNumber) {
-        return new ResponseEntity<List<Transfer>>(transferService.getTransferHistory(accountNumber), HttpStatus.OK);
+        List<Transfer> transfers = transferService.getTransferHistory(accountNumber);
+
+        if (transfers == null || transfers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(transfers, HttpStatus.OK);
     }
 
     @Override
