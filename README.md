@@ -1,2 +1,2 @@
 # transfer-api
-Api destinada a criação de contras e operações de transferencia
+Api destinada a criação de contas e operações de transferencia
