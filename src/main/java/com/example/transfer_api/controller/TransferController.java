@@ -30,7 +30,7 @@ public class TransferController implements TransfersApi {
     }
 
     @Override
-    public ResponseEntity<Transfer> makeTransfer(TransferRequest transfer) {
+    public ResponseEntity<Void> makeTransfer(TransferRequest transfer) {
         try{
             transferService.makeTransfer(transfer);
             return ResponseEntity.status(HttpStatus.CREATED).build();

@@ -1,14 +1,11 @@
 package com.example.transfer_api.converter;
 
-import com.example.transfer_api.entity.CustomerEntity;
 import com.example.transfer_api.entity.TransferEntity;
 import com.example.transfer_api.util.Util;
-import com.example.transfer_api.v1.model.Customer;
 import com.example.transfer_api.v1.model.Transfer;
 import com.example.transfer_api.v1.model.TransferRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
