@@ -1,13 +1,9 @@
 package com.example.transfer_api.service;
 
-import com.example.transfer_api.v1.model.Customer;
-import com.example.transfer_api.v1.model.Transfer;
-import com.example.transfer_api.v1.model.TransferRequest;
-
-import java.util.List;
+import com.example.transfer_api.entity.CustomerEntity;
 
 public interface TransferRulesService {
 
-    Boolean isAuthorizedToTransfer(Customer customerSource, Float amount);
+    Boolean isAuthorizedToTransfer(CustomerEntity customerSource, Float amount);
 
 }
