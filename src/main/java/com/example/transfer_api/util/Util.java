@@ -29,7 +29,6 @@ public class Util {
             }
         } catch (Exception e) {
             String a = e.toString();
-            //log.error("Ocorreu um erro ao realizar parse de um objeto para outro.", e);
         }
 
         return objectType;

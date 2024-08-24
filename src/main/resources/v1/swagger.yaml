@@ -84,10 +84,6 @@ paths:
       responses:
         '200':
           description: Transfer successfully completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Transfer'
         '400':
           description: Insufficient balance or amount exceeds the limit
         '404':

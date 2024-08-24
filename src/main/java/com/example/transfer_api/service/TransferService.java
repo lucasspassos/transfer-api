@@ -1,6 +1,5 @@
 package com.example.transfer_api.service;
 
-import com.example.transfer_api.v1.model.Customer;
 import com.example.transfer_api.v1.model.Transfer;
 import com.example.transfer_api.v1.model.TransferRequest;
 
