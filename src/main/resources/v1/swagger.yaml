@@ -1,0 +1,165 @@
+openapi: 3.0.0
+info:
+  title: Transfer API
+  description: API for managing bank accounts and transfers
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+  - name: customer
+    description: Operations related to customer management
+  - name: transfer
+    description: Operations related to money transfers
+
+paths:
+  /customers:
+    post:
+      tags:
+        - customer
+      summary: Register a new customer
+      operationId: registerCustomer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: Customer registered successfully
+
+        '400':
+          description: Account number already exists
+    get:
+      tags:
+        - customer
+      summary: List all customers
+      operationId: listCustomers
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+
+  /customers/{accountNumber}:
+    get:
+      tags:
+        - customer
+      summary: Get customer by account number
+      operationId: getCustomerByAccountNumber
+      parameters:
+        - name: accountNumber
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Customer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          description: Customer not found
+
+  /transfers:
+    post:
+      tags:
+        - transfer
+      summary: Make a transfer between accounts
+      operationId: makeTransfer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequest'
+      responses:
+        '200':
+          description: Transfer successfully completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+        '400':
+          description: Insufficient balance or amount exceeds the limit
+        '404':
+          description: Account not found
+
+  /transfers/{accountNumber}:
+    get:
+      tags:
+        - transfer
+      summary: Get transfer history for an account
+      operationId: getTransferHistory
+      parameters:
+        - name: accountNumber
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Transfer history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transfer'
+
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        accountNumber:
+          type: integer
+        balance:
+          type: number
+          format: float
+
+    TransferRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sourceAccount:
+          type: integer
+        destinationAccount:
+          type: integer
+        amount:
+          type: number
+          format: float
+
+    Transfer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sourceAccount:
+          type: integer
+        destinationAccount:
+          type: integer
+        amount:
+          type: number
+          format: float
+        timestamp:
+          type: string
+          format: LocalDateTime
+        status:
+          type: string
