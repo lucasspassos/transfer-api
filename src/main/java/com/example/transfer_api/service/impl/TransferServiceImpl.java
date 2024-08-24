@@ -63,7 +63,7 @@ public class TransferServiceImpl implements TransferService {
     @Override
     public List<Transfer> getTransferHistory(Integer accountNumber) {
         return transferConverter.toResponse(
-                transferRepository.findBySourceAccountOrDestinationAccountOrderByTimestampAsc(accountNumber));
+                transferRepository.findBySourceAccountOrDestinationAccountOrderByTimestampAsc(accountNumber, accountNumber));
     }
 
     private void saveBalance(Customer customer){
