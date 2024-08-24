@@ -48,6 +48,10 @@ Após iniciar o projeto, a API estará disponível no URL `http://localhost:8080
 
 A documentação interativa da API pode ser acessada através do Swagger em `http://localhost:8080/swagger-ui.html`.
 
+### Documentação Swagger
+
+A documentação da API também pode ser visualizada diretamente no arquivo YAML do Swagger localizado em `src/main/resources/v1/swagger.yaml`.
+
 ## Endpoints
 
 ### Clientes
@@ -66,14 +70,14 @@ A documentação interativa da API pode ser acessada através do Swagger em `htt
 ### Clientes
 
 - **GET** `/api/v1/customers/{accountNumber}`
-    - **200 OK**: Cliente encontrado.
-    - **404 Not Found**: Cliente não encontrado.
+  - **200 OK**: Cliente encontrado.
+  - **404 Not Found**: Cliente não encontrado.
 
 ### Transferências
 
 - **GET** `/api/v1/transfers/history/{accountNumber}`
-    - **200 OK**: Lista de transferências encontrada.
-    - **404 Not Found**: Nenhuma transferência encontrada.
+  - **200 OK**: Lista de transferências encontrada.
+  - **404 Not Found**: Nenhuma transferência encontrada.
 
 ## Testes
 
@@ -86,7 +90,6 @@ Para rodar os testes unitários e de integração, use o comando `mvn test`.
 3. Faça suas alterações e commit com `git commit -am 'Adiciona nova feature'`.
 4. Faça um push para a branch com `git push origin feature/MinhaFeature`.
 5. Abra um Pull Request.
-
 
 ## Contato
 
